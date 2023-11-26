@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "CollectRequest";
+}
+
+<h2>CollectRequest</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Food Name</th>
+        <th>Quantity</th>
+        <th>Resturant Name</th>
+        <th>Resturant Address</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Contact</th>
+        <th>Status</th>
+        <th>Assign Employee</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FoodName</td>
+            <td>@item.FoodQuantity</td>
+            <td>@item.ResturantName</td>
+            <td>@item.ResturantAddress</td>
+            <td>@item.StartTime</td>
+            <td>@item.EndTime</td>
+            <td>@item.Contact</td>
+            <td>@item.Status</td>
+
+            <form action="" method="post">
+            <td>@Html.DropDownList("EmployeeId", (SelectList)ViewBag.Employees, "Assign an Employee")</td>
+            <input type="hidden" name="CollectRequestId" value="@item.Id" />
+            <td><input type="submit" value="Assign" class="btn btn-danger"></td>
+            </form>
+
+        </tr>
+    }
+</table>
+
